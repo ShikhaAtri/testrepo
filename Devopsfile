@@ -30,7 +30,7 @@ pipeline {
             steps {
               withSonarQubeEnv('MySonar') {
                 sh 'mvn clean package sonar:sonar'
-		sh 'mvn verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=so-pro -Dsonar.login=f72143927b69b5a8824e54a73446f99655d4edde'
+		sh 'mvn verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=so-pro -Dsonar.login=34b67957cee70e304e2b419aefa3528f59c73f1e'
               }
             }
           }
