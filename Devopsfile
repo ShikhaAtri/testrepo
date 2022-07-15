@@ -30,7 +30,8 @@ pipeline {
             steps {
 	    withSonarQubeEnv('MySonar') {
 		sh 'mvn sonar:sonar -Dsonar.organization=atri -Dsonar.projectKey=so-pro -Dsonar.login=34b67957cee70e304e2b419aefa3528f59c73f1e -Dsonar.sources=src/main/ -Dsonar.tests=src/test/ -Dsonar.exclusions=src/main/java/** -Dsonar.test.exclusions=src/main/java/** -Dsonar.host.url=https://sonarcloud.io/'
-              }
+                sh 'sleep 60'
+	      }
             }
 	 }
           stage("Quality Gate") {
