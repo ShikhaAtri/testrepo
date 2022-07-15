@@ -42,6 +42,7 @@ pipeline {
           }
 	}
 	stage('Deploy To Environment') {
+	  steps {
                 echo "The build number is ${env.BUILD_NUMBER}"
                 echo "You can also use \${BUILD_NUMBER} -> ${BUILD_NUMBER}"
 		sh 'cp /var/lib/jenkins/workspace/sonar-pipeline/target/my-app-1.0-SNAPSHOT.jar /var/lib/jenkins/workspace/sonar-pipeline/target/my-app-1.0-SNAPSHOT.jar/1.0-${BUILD_NUMBER}.jar'
