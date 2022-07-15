@@ -7,7 +7,7 @@ pipeline {
         stage('Git Checkout') {
             steps {
                 git branch: 'main',
-		credentialsId: '7245f3ce-de0c-4e3c-a77f-63a08d879a20',
+		credentialsId: '54d780c9-0c64-4e6e-984b-14baaf07f662',
 		url: 'https://github.com/cloudtechner/testrepo.git'
             }
         }    
