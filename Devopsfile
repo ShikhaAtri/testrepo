@@ -28,7 +28,7 @@ pipeline {
         }
 	stage("build & SonarQube analysis") {
             steps {
-	    withSonarQubeEnv('My SonarQube Server') {
+	    withSonarQubeEnv('MySonar') {
 		sh 'mvn verify sonar:sonar -Dsonar.projectKey=so-pro -Dsonar.login=34b67957cee70e304e2b419aefa3528f59c73f1e -Dsonar.host.url=https://sonarcloud.io/'
               }
             }
