@@ -46,7 +46,6 @@ pipeline {
                 sh 'echo Deployment Done'
             }
         }
-	stages {
         stage("Env Variables") {
             steps {
                 echo "The build number is ${env.BUILD_NUMBER}"
@@ -54,6 +53,5 @@ pipeline {
                 sh 'echo "I can access $BUILD_NUMBER in shell command as well."'
             }
         }
-    }
     }
 }
