@@ -1,4 +1,17 @@
-@Library('shared_lib')_
+pipeline {
+    agent any 
+    parameters{string(description: 'please enter tag number:', name: 'tag_number')}
+ 
+    stages {
+        stage('deployment on another server') {
+            steps {
+                echo "$tag_number"
+                sshagent(['ssh-keygen']) {
+                sh 'scp -o StrictHostKeyChecking=no /opt/backup/1.0.$tag_number.jar root@192.165.0.236:~'
+                sh 'ssh -o StrictHostKeyChecking=no root@192.165.0.236 nohup java -jar /root/1.0.$tag_number.jar &'
+                }
+            }
 
-//enter groovy file name of shared library 'your git repoUrl','your git credential id','your sonar-name','your sonar token-id','git branch'
-shared_lib 'https://github.com/cloudtechner/testrepo.git','54d780c9-0c64-4e6e-984b-14baaf07f662','MySonar','so-pro','shikha-cicd'
+        }
+    }
+}
