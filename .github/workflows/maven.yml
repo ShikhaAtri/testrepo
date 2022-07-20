@@ -6,8 +6,6 @@ name: Java CI with Maven
 on:
   push:
     branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
 
 jobs:
   build:
@@ -31,8 +29,16 @@ jobs:
       
     - name: Step 3:- Unit Test
       run: mvn test
-    - name: Step 4:- Build & SonarQube analysis
-      run:|
-      mvn verify sonar:sonar -Dsonar.organization=atri -Dsonar.projectKey=sonar-pp1  -Dsonar.sources=src/main/ -Dsonar.tests=src/test/ -Dsonar.exclusions=src/main/java/** -Dsonar.host.url=https://sonarcloud.io/
-      sleep 60
+    - name: Step 4:- Listing Current directory
+      run: ls -ltrh
+    
+    - name: Step 5:- Target directory
+      run: |
+       cd target
+       ls -ltrh
+       
+    - name: Step  Build & SonarQube analysis
+      run: |
+       mvn verify sonar:sonar -Dsonar.organization=atri -Dsonar.projectKey=sonar-pp1  -Dsonar.sources=src/main/ -Dsonar.tests=src/test/ -Dsonar.exclusions=src/main/java/** -Dsonar.host.url=https://sonarcloud.io/
+       sleep 60
       
