@@ -39,7 +39,7 @@ jobs:
        
     - name: Step  Build & SonarQube analysis
       run: |
-       mvn verify sonar:sonar -Dsonar.projectKey=sonar-pp1 -Dsonar.host.url=https://sonarcloud.io/
+       mvn verify sonar:sonar -Dsonar.projectKey=sonar-pp1 -Dsonar.sources=src/main/ -Dsonar.tests=src/test/ -Dsonar.exclusions=src/main/java/** -Dsonar.host.url=https://sonarcloud.io/
        sleep 60
       env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
