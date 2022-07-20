@@ -23,14 +23,16 @@ jobs:
         distribution: 'temurin'
         cache: maven
         
-    - name: Compile
+    - name: Step 1:- Compile
       run: mvn clean install
       
-    - name: Package
+    - name: Step 2:- Package
       run: mvn package
       
-    - name: Unit Test
+    - name: Step 3:- Unit Test
       run: mvn test
-    - name: build & SonarQube analysis
-      run: mvn verify sonar:sonar -Dsonar.organization=atri -Dsonar.projectKey=sonar-pp1  -Dsonar.sources=src/main/ -Dsonar.tests=src/test/ -Dsonar.exclusions=src/main/java/** -Dsonar.host.url=https://sonarcloud.io/'
-           sleep 60
+    - name: Step 4:- Build & SonarQube analysis
+      run:|
+      mvn verify sonar:sonar -Dsonar.organization=atri -Dsonar.projectKey=sonar-pp1  -Dsonar.sources=src/main/ -Dsonar.tests=src/test/ -Dsonar.exclusions=src/main/java/** -Dsonar.host.url=https://sonarcloud.io/
+      sleep 60
+      
